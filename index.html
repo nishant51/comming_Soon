@@ -30,6 +30,9 @@
       margin-bottom: 40px;
       overflow: hidden; /* Hide overflow */
       white-space: nowrap; /* Prevent text from wrapping */
+      animation: typing 4s steps(40) forwards; /* Typing animation */
+      width: 0; /* Initially hide the text */
+      margin: 0 auto; /* Center-align the text */
     }
     .cta-button {
       display: inline-block;
@@ -90,10 +93,15 @@
       z-index: 2;
       color: white;
     }
+
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
   </style>
 </head>
 <body>
-    <div class="link-holder">
+  <div class="link-holder">
     <a href="https://www.facebook.com/nishanttimsina51/"><i class="fab fa-facebook-f"></i> Facebook</a>
     <a href="https://www.instagram.com/timsina.nishant/"><i class="fab fa-instagram"></i> Instagram</a>
     <a href="https://www.linkedin.com/in/nishant-timsina51/"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
@@ -109,31 +117,14 @@
   
   <div class="container">
     <h1>Coming Soon</h1>
-    <p id="typing-animation-placeholder"></p>
+    <p>We're working on something extraordinary. Stay tuned!</p>
   </div>
 
   <div class="text-holder">
     <a href="https://chat.openai.com/c/ec8d1554-41ba-4612-a43a-ae80fc67875f" style="color: white;">created via ChatGPT</a>
   </div>
 
- 
   <script defer src="/_vercel/insights/script.js">
-    // JavaScript for typing animation
-    const text = "We're working on something extraordinary. Stay tuned!";
-    const placeholder = document.getElementById('typing-animation-placeholder');
-    const initialIndex = Math.floor(text.length / 10); // Middle index
-    let index = 0;
-
-    function typeWriter() {
-      if (index < text.length) {
-        placeholder.innerHTML += text.charAt(initialIndex + index);
-        index++;
-        setTimeout(typeWriter, Math.random() * 150 + 50); // Random typing speed for more natural effect
-      }
-    }
-
-    typeWriter();
-
     // JavaScript for parallax effect on video
     function moveVideo(event) {
       const video = document.getElementById('bgVideo');
