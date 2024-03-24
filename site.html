@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coming Soon</title>
+  <style>
+    body {
+      font-family: Consolas, monospace; /* Monospaced font */
+      margin: 0;
+      padding: 0;
+      background-color: #001f0f; /* Dark green background color */
+      color: #00FF41; /* Neon green text color */
+      overflow: hidden; /* Hide horizontal scrollbar */
+    }
+    .container {
+      text-align: center;
+      margin-top: 10%;
+      position: relative;
+      z-index: 1; /* Ensure content is on top of background */
+    }
+    h1 {
+      font-size: 48px;
+      color: #00FF41; /* Neon green heading text color */
+      margin-bottom: 20px;
+    }
+    p {
+      font-size: 18px;
+      color: #7FDBFF; /* Cyan paragraph text color */
+      margin-bottom: 40px;
+      overflow: hidden; /* Hide overflow */
+      white-space: nowrap; /* Prevent text from wrapping */
+    }
+    .cta-button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #0074D9; /* Blue button color */
+      color: #ffffff; /* White button text color */
+      text-decoration: none;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+    }
+    .cta-button:hover {
+      background-color: #005C99; /* Darker blue on hover */
+    }
+    /* Video container */
+    .video-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      overflow: hidden;
+      perspective: 1000px; /* Set perspective for 3D effect */
+    }
+    /* Responsive video */
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform-style: preserve-3d; /* Ensure video preserves 3D transformations */
+      transition: transform 0.5s ease; /* Smooth transition */
+    }
+    .navbar {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 2; /* Ensure navbar is above video */
+    }
+    .social-icons a {
+      color: white;
+      font-size: 24px;
+      margin-left: 15px;
+      text-decoration: none; /* Remove underline from text */
+    }
+    /* Text holder */
+    .text-holder {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      z-index: 2;
+      color: white;
+    }
+    /* Link holder */
+    .link-holder {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 2;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+    <div class="link-holder">
+    <a href="https://www.facebook.com/nishanttimsina51/"><i class="fab fa-facebook-f"></i> Facebook</a>
+    <a href="https://www.instagram.com/timsina.nishant/"><i class="fab fa-instagram"></i> Instagram</a>
+    <a href="https://www.linkedin.com/in/nishant-timsina51/"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
+    <a href="https://github.com/nishant51"><i class="fab fa-github"></i> GitHub</a>
+  </div>
+  
+  <div class="video-container" onmousemove="moveVideo(event)">
+    <video autoplay loop muted id="bgVideo">
+      <source src="./BG_video.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div> <!-- Video container -->
+  
+  <div class="container">
+    <h1>Coming Soon</h1>
+    <p id="typing-animation-placeholder"></p>
+  </div>
+
+  <div class="text-holder">
+    <a href="https://chat.openai.com/c/ec8d1554-41ba-4612-a43a-ae80fc67875f" style="color: white;">created via ChatGPT</a>
+  </div>
+
+ 
+  <script>
+    // JavaScript for typing animation
+    const text = "We're working on something extraordinary. Stay tuned!";
+    const placeholder = document.getElementById('typing-animation-placeholder');
+    const initialIndex = Math.floor(text.length / 10); // Middle index
+    let index = 0;
+
+    function typeWriter() {
+      if (index < text.length) {
+        placeholder.innerHTML += text.charAt(initialIndex + index);
+        index++;
+        setTimeout(typeWriter, Math.random() * 150 + 50); // Random typing speed for more natural effect
+      }
+    }
+
+    typeWriter();
+
+    // JavaScript for parallax effect on video
+    function moveVideo(event) {
+      const video = document.getElementById('bgVideo');
+      const centerX = window.innerWidth / 2;
+      const centerY = window.innerHeight / 2;
+      const moveX = (event.clientX - centerX) / centerX * 7; // Adjust the sensitivity by changing the factor
+      const moveY = (event.clientY - centerY) / centerY * 7;
+      video.style.transform = `translate(${moveX}px, ${moveY}px) scale(1.1)`;
+    }
+  </script>
+</body>
+</html>
